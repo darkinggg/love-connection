@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siz uchun...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 50%, #f3e5f5 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* Romantik Oyna */
+        .romantic-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 30px 25px;
+            border-radius: 24px;
+            box-shadow: 0 10px 35px rgba(255, 105, 180, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            pointer-events: none;
+        }
+
+        /* Faol oyna unutilmas chiqishi uchun */
+        .romantic-card.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+            position: relative;
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: float 2s ease-in-out infinite alternate;
+        }
+
+        h2 {
+            color: #d81b60;
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .letter-text {
+            color: #4a4a4a;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .next-btn {
+            background: linear-gradient(45deg, #ff6584, #ff8a75);
+            border: none;
+            color: white;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50px;
+            width: 100%;
+            box-shadow: 0 5px 20px rgba(255, 101, 132, 0.4);
+            transition: transform 0.2s ease;
+        }
+
+        .next-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Uchuvchi yurakchalar */
+        .floating-heart {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 4s linear infinite;
+            opacity: 0;
+        }
+
+        /* Animatsiyalar */
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.4) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .big-heart-anim {
+            font-size: 70px;
+            animation: pulse 0.6s infinite alternate;
+        }
+
+        @keyframes pulse {
+            to { transform: scale(1.15); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1-OYNA -->
+    <div class="romantic-card active" id="card1">
+        <div class="icon">✨</div>
+        <h2>Assalomu alaykum...</h2>
+        <div class="letter-text">
+            Ushbu mitti sahifani faqatgina Siz uchun, o'z qo'llarim bilan tayyorladim. Bilaman, Siz balki mening olamimni, kompyuter qarshisida o'tkazadigan soatlarimni har doim ham tushunmasligingiz mumkin. Lekin bugun Sizga o'z qalbimni mutlaqo boshqacha tilda ochmoqchiman. Iltimos, sahifani oxirigacha o'qing...
+        </div>
+        <button class="next-btn" onclick="nextCard(1, 2)">Xatni davom ettirish ✨</button>
+    </div>
+
+    <!-- 2-OYNA -->
+    <div class="romantic-card" id="card2">
+        <div class="icon">🌸</div>
+        <h2>Hayotimdagi O'rningiz</h2>
+        <div class="letter-text">
+            Men har kuni minglab chiziq kodlar yozaman, murakkab tizimlar yarataman. Biroq hayotimdagi eng go'zal va eng mukammal narsa nima deb so'rashsa, hech ikkilanmay Sizning borligingizni aytgan bo'lardim. Siz mening hayotimga kirib kelib, undagi barcha tartibsizliklarni, g'am-tashvishlarni o'z tabassumingiz bilan yo'qqa chiqardingiz. Siz bor joyda men o'zimni baxtli his qilaman.
+        </div>
+        <button class="next-btn" onclick="nextCard(2, 3)">Yana bir gap... ❤️</button>
+    </div>
+
+    <!-- 3-OYNA (YURAK VA YAKUNIY SÖZ) -->
+    <div class="romantic-card" id="card3">
+        <div class="icon big-heart-anim">❤️</div>
+        <h2>Sizni Baxtli Qilmoqchiman</h2>
+        <div class="letter-text" style="text-align: center;">
+            Mening yuragim ham, kelajakka bo'lgan barcha rejalarim ham faqat Siz tomon yo'naltirilgan. Sizni har bir soniya, har bir lahza asrab-avaylashga, baxtli qilishga va'da beraman. <br><br>
+            <b>Men Sizni cheksiz va begubor muhabbat bilan sevaman! ✨</b>
+        </div>
+        <div style="color: #ff6584; font-weight: bold; margin-top: 10px;">Yaxshiyamki borsiz!</div>
+    </div>
+
+    <script>
+        function nextCard(current, next) {
+            // Hozirgi oynani yopish
+            const currentCard = document.getElementById('card' + current);
+            currentCard.classList.remove('active');
+            
+            // Keyingi oynani ochish
+            setTimeout(() => {
+                const nextCard = document.getElementById('card' + next);
+                nextCard.classList.add('active');
+            }, 300); // Silliq o'tish effekti
+
+            // Agar oxirgi sahifaga yetsa, ko'p yurakchalar uchishni boshlaydi
+            if (next === 3) {
+                setInterval(createFloatingHeart, 200);
+            }
+        }
+
+        // Tasodifiy chiroyli yurakchalar yaratish funksiyasi
+        function createFloatingHeart() {
+            const hearts = ["❤️", "💖", "💝", "🌸", "💕"];
+            const heart = document.createElement("div");
+            heart.classList.add("floating-heart");
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+            heart.style.animationDuration = (Math.random() * 2 + 2) + "s"; 
+            document.body.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 4000);
+        }
+    </script>
+</body>
+</html>
